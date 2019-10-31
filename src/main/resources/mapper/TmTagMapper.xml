@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.TmTagMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiafeng.pojo.TmTag">
+    <result column="TmTag_id_tag" jdbcType="INTEGER" property="idTag" />
+    <result column="TmTag_tag" jdbcType="VARCHAR" property="tag" />
+    <result column="TmTag_recommend" jdbcType="INTEGER" property="recommend" />
+    <result column="TmTag_create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="TmTag_create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.xingjiafeng.pojo.TmTag">
+    insert into tm_tag (id_tag, tag, recommend, 
+      create_by, create_time)
+    values (#{idTag,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR}, #{recommend,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiafeng.pojo.TmTag">
+    insert into tm_tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idTag != null">
+        id_tag,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="recommend != null">
+        recommend,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idTag != null">
+        #{idTag,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="recommend != null">
+        #{recommend,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

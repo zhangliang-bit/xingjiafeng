@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MmMarkMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiafeng.pojo.MmMark">
+    <id column="MmMark_id_index" jdbcType="INTEGER" property="idIndex" />
+    <result column="MmMark_id_mark" jdbcType="INTEGER" property="idMark" />
+    <result column="MmMark_id_subject" jdbcType="INTEGER" property="idSubject" />
+    <result column="MmMark_id_social_hub" jdbcType="INTEGER" property="idSocialHub" />
+    <result column="MmMark_mark_pic" jdbcType="VARCHAR" property="markPic" />
+    <result column="MmMark_mark_contect" jdbcType="VARCHAR" property="markContect" />
+    <result column="MmMark_mark_date" jdbcType="VARCHAR" property="markDate" />
+    <result column="MmMark_create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="MmMark_create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MmMark.id_index as MmMark_id_index, MmMark.id_mark as MmMark_id_mark, MmMark.id_subject as MmMark_id_subject, 
+    MmMark.id_social_hub as MmMark_id_social_hub, MmMark.mark_pic as MmMark_mark_pic, 
+    MmMark.mark_contect as MmMark_mark_contect, MmMark.mark_date as MmMark_mark_date, 
+    MmMark.create_by as MmMark_create_by, MmMark.create_time as MmMark_create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_mark MmMark
+    where MmMark.id_index = #{idIndex,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_mark
+    where id_index = #{idIndex,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiafeng.pojo.MmMark">
+    insert into mm_mark (id_index, id_mark, id_subject, 
+      id_social_hub, mark_pic, mark_contect, 
+      mark_date, create_by, create_time
+      )
+    values (#{idIndex,jdbcType=INTEGER}, #{idMark,jdbcType=INTEGER}, #{idSubject,jdbcType=INTEGER}, 
+      #{idSocialHub,jdbcType=INTEGER}, #{markPic,jdbcType=VARCHAR}, #{markContect,jdbcType=VARCHAR}, 
+      #{markDate,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiafeng.pojo.MmMark">
+    insert into mm_mark
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idIndex != null">
+        id_index,
+      </if>
+      <if test="idMark != null">
+        id_mark,
+      </if>
+      <if test="idSubject != null">
+        id_subject,
+      </if>
+      <if test="idSocialHub != null">
+        id_social_hub,
+      </if>
+      <if test="markPic != null">
+        mark_pic,
+      </if>
+      <if test="markContect != null">
+        mark_contect,
+      </if>
+      <if test="markDate != null">
+        mark_date,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idIndex != null">
+        #{idIndex,jdbcType=INTEGER},
+      </if>
+      <if test="idMark != null">
+        #{idMark,jdbcType=INTEGER},
+      </if>
+      <if test="idSubject != null">
+        #{idSubject,jdbcType=INTEGER},
+      </if>
+      <if test="idSocialHub != null">
+        #{idSocialHub,jdbcType=INTEGER},
+      </if>
+      <if test="markPic != null">
+        #{markPic,jdbcType=VARCHAR},
+      </if>
+      <if test="markContect != null">
+        #{markContect,jdbcType=VARCHAR},
+      </if>
+      <if test="markDate != null">
+        #{markDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiafeng.pojo.MmMark">
+    update mm_mark
+    <set>
+      <if test="idMark != null">
+        id_mark = #{idMark,jdbcType=INTEGER},
+      </if>
+      <if test="idSubject != null">
+        id_subject = #{idSubject,jdbcType=INTEGER},
+      </if>
+      <if test="idSocialHub != null">
+        id_social_hub = #{idSocialHub,jdbcType=INTEGER},
+      </if>
+      <if test="markPic != null">
+        mark_pic = #{markPic,jdbcType=VARCHAR},
+      </if>
+      <if test="markContect != null">
+        mark_contect = #{markContect,jdbcType=VARCHAR},
+      </if>
+      <if test="markDate != null">
+        mark_date = #{markDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_index = #{idIndex,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiafeng.pojo.MmMark">
+    update mm_mark
+    set id_mark = #{idMark,jdbcType=INTEGER},
+      id_subject = #{idSubject,jdbcType=INTEGER},
+      id_social_hub = #{idSocialHub,jdbcType=INTEGER},
+      mark_pic = #{markPic,jdbcType=VARCHAR},
+      mark_contect = #{markContect,jdbcType=VARCHAR},
+      mark_date = #{markDate,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id_index = #{idIndex,jdbcType=INTEGER}
+  </update>
+</mapper>

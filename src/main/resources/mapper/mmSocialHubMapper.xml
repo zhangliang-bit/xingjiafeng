@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.mmSocialHubMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiafeng.pojo.mmSocialHub">
+    <id column="MmSocialHub_id_index" jdbcType="INTEGER" property="idIndex" />
+    <result column="MmSocialHub_id_social_hub" jdbcType="VARCHAR" property="idSocialHub" />
+    <result column="MmSocialHub_title" jdbcType="VARCHAR" property="title" />
+    <result column="MmSocialHub_background_image" jdbcType="VARCHAR" property="backgroundImage" />
+    <result column="MmSocialHub_id_owner" jdbcType="VARCHAR" property="idOwner" />
+    <result column="MmSocialHub_introduce_pic" jdbcType="VARCHAR" property="introducePic" />
+    <result column="MmSocialHub_introduce_content" jdbcType="VARCHAR" property="introduceContent" />
+    <result column="MmSocialHub_id_tag" jdbcType="VARCHAR" property="idTag" />
+    <result column="MmSocialHub_deposit" jdbcType="DECIMAL" property="deposit" />
+    <result column="MmSocialHub_create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="MmSocialHub_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MmSocialHub_update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="MmSocialHub_update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MmSocialHub.id_index as MmSocialHub_id_index, MmSocialHub.id_social_hub as MmSocialHub_id_social_hub, 
+    MmSocialHub.title as MmSocialHub_title, MmSocialHub.background_image as MmSocialHub_background_image, 
+    MmSocialHub.id_owner as MmSocialHub_id_owner, MmSocialHub.introduce_pic as MmSocialHub_introduce_pic, 
+    MmSocialHub.introduce_content as MmSocialHub_introduce_content, MmSocialHub.id_tag as MmSocialHub_id_tag, 
+    MmSocialHub.deposit as MmSocialHub_deposit, MmSocialHub.create_by as MmSocialHub_create_by, 
+    MmSocialHub.create_time as MmSocialHub_create_time, MmSocialHub.update_by as MmSocialHub_update_by, 
+    MmSocialHub.update_time as MmSocialHub_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_social_hub MmSocialHub
+    where MmSocialHub.id_index = #{idIndex,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_social_hub
+    where id_index = #{idIndex,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiafeng.pojo.mmSocialHub">
+    insert into mm_social_hub (id_index, id_social_hub, title, 
+      background_image, id_owner, introduce_pic, 
+      introduce_content, id_tag, deposit, 
+      create_by, create_time, update_by, 
+      update_time)
+    values (#{idIndex,jdbcType=INTEGER}, #{idSocialHub,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{backgroundImage,jdbcType=VARCHAR}, #{idOwner,jdbcType=VARCHAR}, #{introducePic,jdbcType=VARCHAR}, 
+      #{introduceContent,jdbcType=VARCHAR}, #{idTag,jdbcType=VARCHAR}, #{deposit,jdbcType=DECIMAL}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiafeng.pojo.mmSocialHub">
+    insert into mm_social_hub
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idIndex != null">
+        id_index,
+      </if>
+      <if test="idSocialHub != null">
+        id_social_hub,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="backgroundImage != null">
+        background_image,
+      </if>
+      <if test="idOwner != null">
+        id_owner,
+      </if>
+      <if test="introducePic != null">
+        introduce_pic,
+      </if>
+      <if test="introduceContent != null">
+        introduce_content,
+      </if>
+      <if test="idTag != null">
+        id_tag,
+      </if>
+      <if test="deposit != null">
+        deposit,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idIndex != null">
+        #{idIndex,jdbcType=INTEGER},
+      </if>
+      <if test="idSocialHub != null">
+        #{idSocialHub,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundImage != null">
+        #{backgroundImage,jdbcType=VARCHAR},
+      </if>
+      <if test="idOwner != null">
+        #{idOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="introducePic != null">
+        #{introducePic,jdbcType=VARCHAR},
+      </if>
+      <if test="introduceContent != null">
+        #{introduceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="idTag != null">
+        #{idTag,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiafeng.pojo.mmSocialHub">
+    update mm_social_hub
+    <set>
+      <if test="idSocialHub != null">
+        id_social_hub = #{idSocialHub,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundImage != null">
+        background_image = #{backgroundImage,jdbcType=VARCHAR},
+      </if>
+      <if test="idOwner != null">
+        id_owner = #{idOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="introducePic != null">
+        introduce_pic = #{introducePic,jdbcType=VARCHAR},
+      </if>
+      <if test="introduceContent != null">
+        introduce_content = #{introduceContent,jdbcType=VARCHAR},
+      </if>
+      <if test="idTag != null">
+        id_tag = #{idTag,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_index = #{idIndex,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiafeng.pojo.mmSocialHub">
+    update mm_social_hub
+    set id_social_hub = #{idSocialHub,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      background_image = #{backgroundImage,jdbcType=VARCHAR},
+      id_owner = #{idOwner,jdbcType=VARCHAR},
+      introduce_pic = #{introducePic,jdbcType=VARCHAR},
+      introduce_content = #{introduceContent,jdbcType=VARCHAR},
+      id_tag = #{idTag,jdbcType=VARCHAR},
+      deposit = #{deposit,jdbcType=DECIMAL},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id_index = #{idIndex,jdbcType=INTEGER}
+  </update>
+</mapper>

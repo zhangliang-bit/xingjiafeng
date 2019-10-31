@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MmMarkSummaryMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiafeng.pojo.MmMarkSummary">
+    <result column="MmMarkSummary_id_subject" jdbcType="INTEGER" property="idSubject" />
+    <result column="MmMarkSummary_subject_mark_count" jdbcType="INTEGER" property="subjectMarkCount" />
+    <result column="MmMarkSummary_subject_mark_number" jdbcType="INTEGER" property="subjectMarkNumber" />
+  </resultMap>
+  <insert id="insert" parameterType="com.xingjiafeng.pojo.MmMarkSummary">
+    insert into mm_mark_summary (id_subject, subject_mark_count, subject_mark_number
+      )
+    values (#{idSubject,jdbcType=INTEGER}, #{subjectMarkCount,jdbcType=INTEGER}, #{subjectMarkNumber,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiafeng.pojo.MmMarkSummary">
+    insert into mm_mark_summary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idSubject != null">
+        id_subject,
+      </if>
+      <if test="subjectMarkCount != null">
+        subject_mark_count,
+      </if>
+      <if test="subjectMarkNumber != null">
+        subject_mark_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idSubject != null">
+        #{idSubject,jdbcType=INTEGER},
+      </if>
+      <if test="subjectMarkCount != null">
+        #{subjectMarkCount,jdbcType=INTEGER},
+      </if>
+      <if test="subjectMarkNumber != null">
+        #{subjectMarkNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

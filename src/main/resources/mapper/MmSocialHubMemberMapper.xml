@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MmSocialHubMemberMapper">
+  <resultMap id="BaseResultMap" type="com.xingjiafeng.pojo.MmSocialHubMember">
+    <id column="MmSocialHubMember_id_join" jdbcType="INTEGER" property="idJoin" />
+    <result column="MmSocialHubMember_id_member" jdbcType="INTEGER" property="idMember" />
+    <result column="MmSocialHubMember_id_social_hub" jdbcType="INTEGER" property="idSocialHub" />
+    <result column="MmSocialHubMember_create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MmSocialHubMember.id_join as MmSocialHubMember_id_join, MmSocialHubMember.id_member as MmSocialHubMember_id_member, 
+    MmSocialHubMember.id_social_hub as MmSocialHubMember_id_social_hub, MmSocialHubMember.create_time as MmSocialHubMember_create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mm_social_hub_member MmSocialHubMember
+    where MmSocialHubMember.id_join = #{idJoin,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mm_social_hub_member
+    where id_join = #{idJoin,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xingjiafeng.pojo.MmSocialHubMember">
+    insert into mm_social_hub_member (id_join, id_member, id_social_hub, 
+      create_time)
+    values (#{idJoin,jdbcType=INTEGER}, #{idMember,jdbcType=INTEGER}, #{idSocialHub,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xingjiafeng.pojo.MmSocialHubMember">
+    insert into mm_social_hub_member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idJoin != null">
+        id_join,
+      </if>
+      <if test="idMember != null">
+        id_member,
+      </if>
+      <if test="idSocialHub != null">
+        id_social_hub,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idJoin != null">
+        #{idJoin,jdbcType=INTEGER},
+      </if>
+      <if test="idMember != null">
+        #{idMember,jdbcType=INTEGER},
+      </if>
+      <if test="idSocialHub != null">
+        #{idSocialHub,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xingjiafeng.pojo.MmSocialHubMember">
+    update mm_social_hub_member
+    <set>
+      <if test="idMember != null">
+        id_member = #{idMember,jdbcType=INTEGER},
+      </if>
+      <if test="idSocialHub != null">
+        id_social_hub = #{idSocialHub,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_join = #{idJoin,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xingjiafeng.pojo.MmSocialHubMember">
+    update mm_social_hub_member
+    set id_member = #{idMember,jdbcType=INTEGER},
+      id_social_hub = #{idSocialHub,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id_join = #{idJoin,jdbcType=INTEGER}
+  </update>
+</mapper>
