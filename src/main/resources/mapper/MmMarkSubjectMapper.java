@@ -5,7 +5,7 @@ import com.xingjiafeng.pojo.MmMarkSubject;
 public interface MmMarkSubjectMapper {
     int deleteByPrimaryKey(Integer idIndex);
 
-    int insert(MmMarkSubject record);
+    int insert(MmMarkSubject recojrd);
 
     int insertSelective(MmMarkSubject record);
 
